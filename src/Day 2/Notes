@@ -1,0 +1,71 @@
+1. What is the Difference between react and react native? Which one is library or framework?
+   A. React and React Native are developed by Facebook and have gained a huge fan base in a short time. React is known as ReactJs, which is a JavaScript library to build single-page web applications.
+
+Besides, React Native is a React JS-based framework to design mobile apps. Moreover, with reusable components, you can develop native mobile applications.
+
+. React is a JavaScript library of reusable components designed to create skeletons of the apps, whereas React Native is designed to build native mobile apps with reusable components.
+. React is an open-source JS library for building the UIs for web applications; besides, React Native is used to build rich mobile UI from declarative components using only JavaScript.
+. Both React and React Native are ruling the industry and are widely used for mobile and web applications. However, the difference between web apps vs websites will not affect your user.
+
+React: A Front-end Development Library
+
+React, or ReactJs is an open-source JavaScript library used to develop single-page web applications. It’s one of the popular libraries to build UI (front-end) for web and mobile apps. It was developed and backed by Facebook in 2011 and has gained popularity since then.
+
+React Native: A Native Mobile Development Library
+
+When we talk about React Native, it’s an open-source JavaScript-based framework developed by Facebook to meet its growing demand of mobile needs. React Native is a hybrid mobile app framework, allowing you to develop mobile applications with a single codebase. This JavaScript framework lets you build mobile apps that render natively across different platforms like iOS and Android.
+
+2. What is the package name you are using for routing?
+   A. React Router is a standard library system built on top of the React and used to create routing in the React application using React Router Package. It provides the synchronous URL on the browser with data that will be displayed on the web page. It maintains the standard structure and behavior of the application and mainly used for developing single page web applications.
+
+Routing is a process in which a user is directed to different pages based on their action or request. ReactJS Router is mainly used for developing Single Page Web Applications. React Router is used to define multiple routes in the application. When a user types a specific URL into the browser, and if this URL path matches any 'route' inside the router file, the user will be redirected to that particular route.
+
+React Router plays an important role to display multiple views in a single page application. Without React Router, it is not possible to display multiple views in React applications. Most of the social media websites like Facebook, Instagram uses React Router for rendering multiple views.
+
+3. What is lazy loading in react?
+   A. Lazy loading is a technique for waiting to load certain parts of a webpage — especially images — until they are needed. Instead of loading everything all at once, known as "eager" loading, the browser does not request certain resources until the user interacts in such a way that the resources are needed. When implemented properly, lazy loading can speed up page load times.
+
+This type of loading is called "lazy" because it encourages a web browser to procrastinate. When displaying a lazy loading webpage, a browser essentially says, "I will wait to load these images until I really need to." When displaying an eager loading webpage, a browser takes the opposite attitude: "I will take care of everything right away!" While procrastination sometimes carries negative connotations in the real world, in this case it is often more efficient.
+
+For instance, a blog post might have an image at the top of the page and a diagram near the bottom. Someone reading the blog post might not reach the bottom of the text for several minutes, so the browser waits to load the diagram until the reader scrolls to that section. This way, the page loads more quickly at first, because the browser is loading one image instead of two.
+
+4. Difference between stateful and stateless components
+   A. The literal difference is that one has state, and the other doesn’t. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
+
+Stateful Component:
+class Main extends Component {
+constructor() {
+super()
+this.state = {
+books: []
+}
+}
+render() {
+return <BooksList books={this.state.books} />;
+}
+}
+
+Stateless Component:
+const BooksList = ({books}) => {
+return (
+
+   <ul>
+     {books.map(book => {
+       return <li>book</li>
+     })}
+   </ul>
+ )
+}
+
+Notice the stateless component is written as a function. As cool as state is, you should always aim to make your components as simple and stateless as possible, so different components can be reused like Lego pieces, even if you don’t have immediate plans to reuse a component. The stateful ones should feel lucky to be so!
+
+5. How do you switch one component to another, Conditional Rendering?
+   A. . React Router
+
+. Link
+
+. NavLink
+
+. Using conditions with logical && operator
+
+Conditional Rendering:- ! Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them. ! That is to create multiple components and render them based on some conditions. This is also a kind of encapsulation supported by React.
