@@ -1,0 +1,12 @@
+Difference between axios and fetch?
+A. Axios: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+
+Fetch: The Fetch API provides a fetch() method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
+
+     Axios	                                                                              Fetch
+
+Axios has url in request object. Fetch has no url in request object.
+Axios is a stand-alone third party package that can be easily installed. Fetch is built into most modern browsers; no installation is required as such.
+Axios enjoys built-in XSRF protection. Fetch does not.
+Axios uses the data property. Fetch uses the body property.
+Axios’ data contains the object. Fetch’s body has to be stringified.
