@@ -1,0 +1,104 @@
+1. What are React Life cycles? Explain each one with Example.
+   A. Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+   The three phases are: Mounting, Updating, and Unmounting.
+   Mounting
+   Mounting means putting elements into the DOM.
+
+React has four built-in methods that gets called, in this order, when mounting a component:
+
+1.constructor()
+2.getDerivedStateFromProps()
+3.render()
+4.componentDidMount()
+
+The render() method is required and will always be called, the others are optional and will be called if you define them.
+
+Constructor
+The constructor() method is called before anything else, when the component is initiated, and it is the natural place to set up the initial state and other initial values.
+
+The constructor() method is called with the props, as arguments, and you should always start by calling the super(props) before anything else, this will initiate the parent's constructor method and allows the component to inherit methods from its parent (React.Component).
+
+getDerivedStateFromProps
+The getDerivedStateFromProps() method is called right before rendering the element(s) in the DOM.
+This is the natural place to set the state object based on the initial props.
+It takes state as an argument, and returns an object with changes to the state.
+The example below starts with the favorite color being "red", but the getDerivedStateFromProps() method updates the favorite color based on the favcol attribute.
+render
+The render() method is required, and is the method that actually outputs the HTML to the DOM.
+componentDidMount
+The componentDidMount() method is called after the component is rendered.
+This is where you run statements that requires that the component is already placed in the DOM.
+Updating
+The next phase in the lifecycle is when a component is updated.
+A component is updated whenever there is a change in the component's state or props.
+React has five built-in methods that gets called, in this order, when a component is updated:
+
+1. getDerivedStateFromProps()
+2. shouldComponentUpdate()
+3. render()
+4. getSnapshotBeforeUpdate()
+5. componentDidUpdate()
+   The render() method is required and will always be called, the others are optional and will be called if you define them.
+
+---
+
+getDerivedStateFromProps
+Also at updates the getDerivedStateFromProps method is called. This is the first method that is called when a component gets updated.
+This is still the natural place to set the state object based on the initial props.
+The example below has a button that changes the favorite color to blue, but since the getDerivedStateFromProps() method is called, which updates the state with the color from the favcol attribute, the favorite color is still rendered as yellow
+shouldComponentUpdate
+In the shouldComponentUpdate() method you can return a Boolean value that specifies whether React should continue with the rendering or not.
+The default value is true.
+The example below shows what happens when the shouldComponentUpdate() method returns false
+render
+The render() method is of course called when a component gets updated, it has to re-render the HTML to the DOM, with the new changes.
+The example below has a button that changes the favorite color to blue
+getSnapshotBeforeUpdate
+In the getSnapshotBeforeUpdate() method you have access to the props and state before the update, meaning that even after the update, you can check what the values were before the update.
+If the getSnapshotBeforeUpdate() method is present, you should also include the componentDidUpdate() method, otherwise you will get an error.
+The example below might seem complicated, but all it does is this:
+When the component is mounting it is rendered with the favorite color "red".
+When the component has been mounted, a timer changes the state, and after one second, the favorite color becomes "yellow".
+This action triggers the update phase, and since this component has a getSnapshotBeforeUpdate() method, this method is executed, and writes a message to the empty DIV1 element.
+Then the componentDidUpdate() method is executed and writes a message in the empty DIV2 element
+componentDidUpdate
+The componentDidUpdate method is called after the component is updated in the DOM.
+The example below might seem complicated, but all it does is this:
+When the component is mounting it is rendered with the favorite color "red".
+When the component has been mounted, a timer changes the state, and the color becomes "yellow".
+This action triggers the update phase, and since this component has a componentDidUpdate method, this method is executed and writes a message in the empty DIV element
+Unmounting
+The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
+React has only one built-in method that gets called when a component is unmounted:
+• componentWillUnmount()
+
+---
+
+componentWillUnmount
+The componentWillUnmount method is called when the component is about to be removed from the DOM.
+
+2. What is Context API?
+   A. The React Context API is a way for a React app to effectively produce global variables that can be passed around. This is the alternative to "prop drilling" or moving props from grandparent to child to parent, and so on. Context is also touted as an easier, lighter approach to state management using Redux.
+   Context API is a (kind of) new feature added in version 16.3 of React that allows one to share state across the entire app (or part of it) lightly and with ease.
+   React.createContext() is all you need. It returns a consumer and a provider. Provider is a component that as it's names suggests provides the state to its children. It will hold the "store" and be the parent of all the components that might need that store. Consumer as it so happens is a component that consumes and uses the state.
+
+3. What is props drilling in react? What is state uplifting?
+   A. Props Drilling: Prop drilling is the unofficial term for passing data through several nested children components, in a bid to deliver this data to a deeply-nested component. The problem with this approach is that most of the components through which this data is passed have no actual need for this data. They are simply used as mediums for transporting this data to its destination component.
+   This is where the term “drilling” comes in, as these components are forced to take in unrelated data and pass it to the next component, which in turn passes it, and so on, until it reaches its destination. This can cause major issues with component reusability and app performance.
+
+State uplifting: As we know, every component in React has its own state. Because of this sometimes data can be redundant and inconsistent. So, by Lifting up the state we make the state of the parent component as a single source of truth and pass the data of the parent in its children.
+
+Time to use Lift up the State: If the data in “parent and children components” or in “cousin components” is Not in Sync.
+
+Example 1: If we have 2 components in our App. A -> B where, A is parent of B. keeping the same data in both Component A and B might cause inconsistency of data.
+
+Example 2: If we have 3 components in our App.Where A is the parent of B and C. In this case, If there is some Data only in component B but, component C also wants that data. We know Component C cannot access the data because a component can talk only to its parent or child (Not cousins).
+
+4.Difference between useEffect and useContext hooks?
+A. React Hooks allow us to manage state data inside functional components; now we don’t need to create class components just to manage state data.
+React has a few built-in hooks such as useState, useCallback, useEffect, etc.
+The useContext hook allows us to connect and consume a context. The useContext hook receives a single argument, which is the context that you want to have access to.
+const notes = useContext(NotesContext);
+useContext: useContext is a hook that provides a way to pass data through the component tree without manually passing props down through each nested component.
+useEffect: A hook that helps us to perform mutations, subscriptions, timers, logging, and other side effects after all the components has been rendered. The useEffect accepts a function that is imperative in nature and a list of dependencies. When its dependencies change it executes the passed function.
+Now if we don’t use useEffect, every time a button is pressed data will be fetched from the server even if the choice does not change. In such a condition this hook helps us to not call the fetching logic unless our choice changes.
